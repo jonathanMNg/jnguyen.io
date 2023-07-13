@@ -9,6 +9,7 @@ import * as Io5Icons from "react-icons/io5/index.js";
 import * as RiIcons from "react-icons/ri/index.js";
 import * as TbIcons from "react-icons/tb/index.js";
 import * as TfiIcons from "react-icons/tfi/index.js";
+import * as SiIcons from "react-icons/si/index.js";
 
 type IconMap = Record<string, IconType>;
 
@@ -27,6 +28,7 @@ const iconLibraries: { [key: string]: IconMap } = {
   ri: RiIcons,
   tb: TbIcons,
   tfi: TfiIcons,
+  si: SiIcons,
 };
 
 const DynamicIcon: FC<IDynamicIcon> = ({ icon, ...props }) => {

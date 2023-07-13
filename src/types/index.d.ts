@@ -11,3 +11,9 @@ export type Button = {
   label: string;
   link: string;
 };
+
+
+export type Skill = {
+  name: string;
+  level: string;
+}

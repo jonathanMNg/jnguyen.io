@@ -6,6 +6,7 @@ import menu from "@/config/menu.json";
 import social from "@/config/social.json";
 import { markdownify } from "@/lib/utils/textConverter";
 
+import DynamicIcon from "@/helpers/DynamicIcon";
 const { footer }: { footer: { name: string; url: string }[] } = menu;
 ---
 
@@ -34,6 +35,7 @@ const { footer }: { footer: { name: string; url: string }[] } = menu;
   <div class="border-t border-border py-7 dark:border-darkmode-border">
     <div class="container text-center text-light dark:text-darkmode-light">
       <p set:html={markdownify(config.params.copyright)} />
+
     </div>
   </div>
 </footer>

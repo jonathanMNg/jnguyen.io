@@ -9,31 +9,6 @@ banner:
     label: "Get Started For Free"
     link: "https://github.com/zeon-studio/astroplate"
 
-# Profile
-
-profile:
-  name: "Jonathan Nguyen"
-  desc: "Full Stack Developer."
-  image: "/images/avatar-main.png"
-  alt: "Profile Picture"
-
-# Skills
-skills:
-  - name: "Javascript"
-    level: "Fluent"
-    icon: "RiJavascriptFill"
-  
-  - name: "Flutter"
-    level: "Intermediate"
-    icon: "RiFlutterFill"
-    
-  - name: "Python"
-    level: "Fluent"
-    icon: "FaPython"
-    
-  - name: "C#"
-    level: "Fluent"
-    icon: "SiCsharp"
 # Features
 features:
   - title: "What's Included in Astroplate"
