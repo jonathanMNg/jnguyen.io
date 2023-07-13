@@ -9,7 +9,7 @@ import { sortByDate } from "@/lib/utils/sortFunctions";
 import PageHeader from "@/partials/PageHeader.astro";
 import PostSidebar from "@/partials/PostSidebar.astro";
 import { getEntryBySlug } from "astro:content";
-
+import { Image } from "@astrojs/image/components";
 const { blog_folder } = config.settings;
 const postIndex = await getEntryBySlug<any, string>(blog_folder, "-index");
 const posts = await getSinglePage(blog_folder);
