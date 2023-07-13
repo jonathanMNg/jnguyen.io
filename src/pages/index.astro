@@ -2,13 +2,10 @@
 import Base from "@/layouts/Base.astro";
 import { markdownify } from "@/lib/utils/textConverter";
 
-import Logo from "@/layouts/components/Logo.astro";
 import type { Button, Feature, Skill } from "@/types";
 import { Image } from "@astrojs/image/components";
 import { getEntryBySlug } from "astro:content";
-import { FaCheck } from "react-icons/fa/index.js";
 
-import config from "@/config/config.json";
 
 import SkillCard from "@/layouts/components/SkillCard.astro";
 interface Homepage {
@@ -29,7 +26,7 @@ interface Homepage {
 }
 
 const homepage = await getEntryBySlug("homepage", "index");
-const { banner, features, profile, skills }: Homepage = homepage.data;
+const { profile, skills }: Homepage = homepage.data;
 ---
 
 <Base>

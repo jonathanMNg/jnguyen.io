@@ -27,12 +27,6 @@
     "copyright": "© Jonathan Nguyen 2023."
   },
 
-  "navigation_button": {
-    "enable": true,
-    "label": "Get Started",
-    "link": "https://github.com/zeon-studio/astroplate"
-  },
-
   "disqus": {
     "enable": true,
     "shortname": "themefisher-template",
