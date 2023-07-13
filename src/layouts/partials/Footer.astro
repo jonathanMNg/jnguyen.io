@@ -34,7 +34,7 @@ const { footer }: { footer: { name: string; url: string }[] } = menu;
   </div>
   <div class="border-t border-border py-7 dark:border-darkmode-border">
     <div class="container text-center text-light dark:text-darkmode-light">
-      <p set:html={markdownify(config.params.copyright)} />
+      <p>{markdownify(config.params.copyright)} Built with <a class="text-blue-600" href="https://astro.build">Astro <DynamicIcon className="inline-block" icon="SiAstro"/></a></p>
 
     </div>
   </div>
