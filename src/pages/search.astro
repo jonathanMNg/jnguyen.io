@@ -1,7 +1,7 @@
 ---
 import config from "@/lib/config/config.json";
 import Base from "@/layouts/Base.astro";
-import Search from "@/layouts/Search";
+import SearchTsx from "../layouts/Search";
 import { getSinglePage } from "@/lib/contentParser.astro";
 
 const { blog_folder } = config.settings;
@@ -18,5 +18,5 @@ const searchList = posts.map((item) => ({
 ---
 
 <Base title={`Search`}>
-  <Search client:load searchList={searchList} />
+  <SearchTsx client:load searchList={searchList} />
 </Base>

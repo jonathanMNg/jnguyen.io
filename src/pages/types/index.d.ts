@@ -16,4 +16,5 @@ export type Button = {
 export type Skill = {
   name: string;
   level: string;
+  icon: string;
 }
