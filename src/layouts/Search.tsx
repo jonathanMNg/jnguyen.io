@@ -1,4 +1,4 @@
-import config from "@/config/config.json";
+import config from "@/lib/config/config.json";
 import { humanize, plainify, slugify } from "@/lib/utils/textConverter";
 import Fuse from "fuse.js";
 import React, { useEffect, useRef, useState } from "react";

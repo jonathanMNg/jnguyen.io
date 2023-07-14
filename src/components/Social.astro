@@ -1,6 +1,6 @@
 ---
 const { source, className } = Astro.props;
-import DynamicIcon from "@/helpers/DynamicIcon";
+import DynamicIcon from "@/layouts/helpers/DynamicIcon";
 
 export interface ISocial {
   name: string;
@@ -20,7 +20,7 @@ export interface ISocial {
           rel="noopener noreferrer nofollow"
         >
           <span class="sr-only">{social.name}</span>
-          <DynamicIcon class="inline-block" icon={social.icon} />
+          <DynamicIcon className="inline-block" icon={social.icon} />
         </a>
       </li>
     ))
