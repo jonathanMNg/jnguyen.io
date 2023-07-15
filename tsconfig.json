@@ -20,6 +20,6 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["**/*.ts", "**/*.tsx", "**/*.astro"],
+  "include": ["**/*.ts", "**/*.tsx", "**/*.astro", "src/layouts/helpers/AnimatedCard.tsx"],
   "exclude": ["node_modules"]
 }

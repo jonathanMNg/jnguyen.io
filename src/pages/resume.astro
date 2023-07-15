@@ -3,7 +3,8 @@ import { Image } from "@astrojs/image/components";
 import Base from "@/layouts/Base.astro";
 import { markdownify } from "@/lib/utils/textConverter";
 import { getEntryBySlug } from "astro:content";
-
+import bio from "@/lib/config/bio.json";
+import ResumeSection from "../components/resume/ResumeSection.astro";
 const entry = await getEntryBySlug<any, string>("resume", "resume");
 const { Content } = await entry.render();
 const { title, description, meta_title, image } = entry.data;
@@ -15,27 +16,54 @@ const { title, description, meta_title, image } = entry.data;
   description={description}
   image={image}
 >
-  <section class="section-sm">
-    <div class="container">
-      <div class="row justify-center">
-        <div class="text-center md:col-10 lg:col-7">
-          {
-            image && (
-              <Image
-                class="mx-auto mb-6 rounded-lg"
-                src={image}
-                width={200}
-                height={200}
-                alt={title}
-              />
-            )
-          }
-          <h2 set:html={markdownify(title)} class="h3 mb-6" />
-          <div class="content">
-            <Content />
-          </div>
-        </div>
-      </div>
+<div class="container">
+
+  <!-- Interests -->
+  <div class="flex flex-col lg:flex-row items-center pb-10">
+    <div class="lg:w-1/4">
+      <h1>Interests</h1>
     </div>
-  </section>
+    <div class="lg:w-1/2">
+      <p class="m-0">{bio.interests.map((interest) => interest.name + ", ")}</p>
+    </div>
+  </div>
+  
+ <!-- Skills -->
+  <div class="flex flex-col lg:flex-row items-start pb-10">
+    <div class="lg:w-1/4">
+      <h1>Skills</h1>
+    </div>
+    <div class="lg:w-1/2">
+      <p class="m-0">{bio.skills.map((interest) => interest.name + ": " + interest.keywords.map((kw) => kw))}</p>
+    </div>
+  </div>
+
+  <!-- Education -->
+
+  <div class="flex flex-col lg:flex-row items-start pb-10">
+    <div class="lg:w-1/4">
+      <h1 class="">Education</h1>
+    </div>
+    <div class="lg:w-1/2">
+      <p class="m-0">{bio.education.map((edu) => edu.institution + ", " + edu.studyType + " " + edu.area)}</p>
+    </div>
+    <div class="lg:w-1/4">
+      <p class="m-0 text-end">{bio.education.map((edu) => edu.startDate + " - " + edu.endDate)}</p>
+    </div>
+  </div>
+
+  <!-- Work -->
+
+  <div class="flex flex-col lg:flex-row items-start pb-10">
+    <div class="lg:w-1/4">
+      <h1 class="">Work</h1>
+    </div>
+    <div class="lg:w-1/2">
+      <p class="m-0">{bio.education.map((edu) => edu.institution + ", " + edu.studyType + " " + edu.area)}</p>
+    </div>
+    <div class="lg:w-1/4">
+      <p class="m-0 text-end">{bio.education.map((edu) => edu.startDate + " - " + edu.endDate)}</p>
+    </div>
+  </div>
+</div>
 </Base>

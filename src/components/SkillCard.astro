@@ -2,7 +2,7 @@
 // Insert your favorite icons from https://heroicons.dev
 // or use your own SVGs
 
-
+import AnimatedCard from "@/helpers/AnimatedCard";
 import DynamicIcon from "@/layouts/helpers/DynamicIcon";
 export interface Props {
   name: string;
@@ -12,7 +12,7 @@ export interface Props {
 
 const { name, level, icon } = Astro.props;
 ---
-
+<AnimatedCard client:load>
 <article
   class="bg-theme-light dark:bg-darkmode-theme-light p-5 rounded-lg md:w-72 shadow-xl lg:hover:scale-95 transform transition-all duration-200 select-none"
 >
@@ -32,3 +32,4 @@ const { name, level, icon } = Astro.props;
   </div>
   <p class="text-lg mt-5">{level}</p>
 </article>
+</AnimatedCard>

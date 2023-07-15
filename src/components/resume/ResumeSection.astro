@@ -1,0 +1,26 @@
+---
+export interface ResumeContext {
+    name: string;
+    detail: string;
+}
+const { data } = Astro.props;
+const { header, context, period } : {header: string, context: ResumeContext[], period: string} = data.data;
+---
+<div class="flex flex-col lg:flex-row items-start pb-10">
+    <div class="lg:w-1/4">
+      <h1 class="">{header}</h1>
+    </div>
+    <div class="lg:w-1/2">
+      {context.map((obj) => 
+      <>
+        <div class="columns-1">
+            {obj.name ?? (<h1>{obj.name}</h1>) }
+            <p>{obj.detail}</p>
+        </div>
+      </>)}
+    </div>
+    <div class="lg:w-1/4">
+      <p class="m-0 text-end">{period}</p>
+    </div>
+  </div>
+  

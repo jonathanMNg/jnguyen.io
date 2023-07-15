@@ -3,6 +3,7 @@ import { Image } from "@astrojs/image/components";
 import config from "@/lib/config/config.json";
 import { humanize, plainify, slugify } from "@/lib/utils/textConverter";
 import { FaRegFolder, FaRegUserCircle } from "react-icons/fa/index.js";
+import AnimatedCard from "@/helpers/AnimatedCard";
 
 const {
   summary_length,
@@ -11,7 +12,7 @@ const {
 const { data } = Astro.props;
 const { title, image, date, author, categories } = data.data;
 ---
-
+<AnimatedCard client:load>
 <div class="bg-body dark:bg-darkmode-body">
   {
     image && (
@@ -56,3 +57,4 @@ const { title, image, date, author, categories } = data.data;
     read more
   </a>
 </div>
+</AnimatedCard>
