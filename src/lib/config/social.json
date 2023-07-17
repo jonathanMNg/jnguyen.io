@@ -1,11 +1,6 @@
 {
   "main": [
     {
-      "name": "facebook",
-      "icon": "FaFacebook",
-      "link": "https://www.facebook.com/justkidding92jkd"
-    },
-    {
       "name": "github",
       "icon": "FaGithub",
       "link": "https://github.com/jonathanMNg"
@@ -13,7 +8,12 @@
     {
       "name": "linkedin",
       "icon": "FaLinkedin",
-      "link": "https://www.linkedin.com/in/jonathannguyen808/"
+      "link": "https://www.linkedin.com/in/jnguyenio/"
+    },
+    {
+      "name": "twitter",
+      "icon": "FaTwitter",
+      "link": "https://twitter.com/jnguyenio"
     }
   ]
 }

@@ -3,6 +3,17 @@ title: "Hey, I am John Doe!"
 meta_title: "About"
 description: "this is meta description"
 image: "/images/avatar.png"
+
+# Interests
+interests:
+  header: "Interests"
+  context:
+    - "Interactive media"
+    - "Neuromorphic Computing"
+    - "Quantum Computing"
+    - "Robotics"
+    - "3D Graphics"
+  period: "2013-09-01 - Present"
 draft: false
 ---
 

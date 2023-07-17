@@ -4,10 +4,27 @@ import Base from "@/layouts/Base.astro";
 import { markdownify } from "@/lib/utils/textConverter";
 import { getEntryBySlug } from "astro:content";
 import bio from "@/lib/config/bio.json";
-import ResumeSection from "../components/resume/ResumeSection.astro";
-const entry = await getEntryBySlug<any, string>("resume", "resume");
+import ResumeSection, { ResumeContext } from "../components/resume/ResumeSection.astro";
+const entry = await getEntryBySlug<any, string>("resume", "index");
 const { Content } = await entry.render();
-const { title, description, meta_title, image } = entry.data;
+interface Resume {
+  title: string;
+  description: string;
+  meta_title: string;
+  image: string;
+}
+const { title, description, meta_title, image } : Resume = entry.data;
+const interests = {
+  header: "Interests",
+  period: "",
+  context: bio.interests.map(interest => interest.name).join(", ")
+}
+
+const skills = {
+  header: "Skills",
+  period: "",
+  context: bio.skills.map(skill => skill.name)
+}
 ---
 
 <Base
@@ -17,7 +34,8 @@ const { title, description, meta_title, image } = entry.data;
   image={image}
 >
 <div class="container">
-
+  <ResumeSection {...interests}/>
+  <ResumeSection {...skills}/>
   <!-- Interests -->
   <div class="flex flex-col lg:flex-row items-center pb-10">
     <div class="lg:w-1/4">
