@@ -9,12 +9,12 @@
       "url": "/blog"
     },
     {
-      "name": "Resume",
-      "url": "/resume"
+      "name": "Projects",
+      "url": "/project"
     },
     {
-      "name": "Contact",
-      "url": "/contact"
+      "name": "Resume",
+      "url": "/resume"
     }
   ],
   "footer": [

@@ -60,3 +60,7 @@
     color: rgb(253, 23, 100);
   }
 }
+
+img[alt$="<"] {
+  display: inline-flex;
+}
