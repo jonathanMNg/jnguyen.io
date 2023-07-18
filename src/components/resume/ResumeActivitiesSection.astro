@@ -1,0 +1,46 @@
+---
+import AnimatedCard from '@/helpers/AnimatedCard';
+export type ResumeActivitiyJob = {
+    name: string;
+    summaries: string[];
+    startDate: string;
+    endDate: string;
+}
+
+export type ResumeActivityOrg = {
+    name: string;
+    jobs: ResumeActivitiyJob[];
+    period: string;
+}
+export interface Props {
+  header: string;
+  organizations: ResumeActivityOrg[];
+}
+const { header, organizations } = Astro.props;
+---
+<AnimatedCard client:load>
+<div class="flex flex-col lg:flex-row items-start pb-5">
+    <div class="lg:w-1/4">
+      <h1 class="">{header}</h1>
+    </div>
+    <div class="lg:w-3/4">
+      {organizations.map(org => 
+        <div class="flex flex-col lg:flex-row items-start pb-5">
+          <div class="lg:w-2/3">
+            <h5>{org.name}</h5>
+            {org.jobs.map(j => 
+                <div class="mb-5">
+                    <p>{j.name} ({j.startDate} → {j.endDate})</p>
+                    <ul class="list-disc ml-10">
+                        {j.summaries.map(sum => <li>{sum}</li>)}
+                    </ul>
+                </div>)}
+          </div>
+          <div class="lg:w-1/3">
+            <p class="m-0 text-end">{org.period}</p>
+          </div>
+        </div>
+      )}
+    </div>
+  </div>
+</AnimatedCard>

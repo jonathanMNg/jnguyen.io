@@ -4,7 +4,9 @@ import Base from "@/layouts/Base.astro";
 import { markdownify } from "@/lib/utils/textConverter";
 import { getEntryBySlug } from "astro:content";
 import bio from "@/lib/config/bio.json";
-import ResumeSection, { ResumeContext } from "../components/resume/ResumeSection.astro";
+import ResumeSection from "../components/resume/ResumeSection.astro";
+import DynamicIcon from "@/helpers/DynamicIcon";
+import ResumeActivitiesSection from "../components/resume/ResumeActivitiesSection.astro";
 const entry = await getEntryBySlug<any, string>("resume", "index");
 const { Content } = await entry.render();
 interface Resume {
@@ -13,17 +15,58 @@ interface Resume {
   meta_title: string;
   image: string;
 }
+
 const { title, description, meta_title, image } : Resume = entry.data;
 const interests = {
   header: "Interests",
-  period: "",
-  context: bio.interests.map(interest => interest.name).join(", ")
+  context: [{ name: "", period: "", detail: bio.interests.map(interest => interest.name).join(", ")}]
 }
 
 const skills = {
   header: "Skills",
-  period: "",
-  context: bio.skills.map(skill => skill.name)
+  context: bio.skills.map(skill => ({name: skill.name, period: "", detail: skill.keywords.map(kw => kw).join(", ")}))
+}
+
+const education = {
+  header: "Education",
+  context: bio.education.map(edu => ({name: edu.institution, period: `${edu.startDate} → ${edu.endDate}`, detail: `${edu.studyType} ${edu.area}`}))
+}
+
+const work = {
+  header: "Work",
+  organizations: bio.work.map(w => (
+    {
+      name: w.company, 
+      period: `${w.startDate} → ${w.endDate}`,
+      jobs: w.jobs.map(job => (
+        {
+          name: job.name, 
+          summaries: job.summaries.map(sum => sum),
+          startDate: job.startDate, 
+          endDate: job.endDate
+        })).reverse()
+    })).reverse()
+}
+
+const activities = {
+  header: "Activities",
+  organizations: bio.activities.map(act => (
+    {
+      name: act.company, 
+      period: `${act.startDate} → ${act.endDate}`,
+      jobs: act.jobs.map(job => (
+        {
+          name: job.name, 
+          summaries: job.summaries.map(sum => sum),
+          startDate: job.startDate, 
+          endDate: job.endDate
+        })).reverse()
+    })).reverse()
+}
+
+const awards = {
+  header: "Awards",
+  context: bio.awards.map(award => ({name: `${award.title}, ${award.awarder}`, period: award.date, detail: award.summary}))
 }
 ---
 
@@ -33,55 +76,33 @@ const skills = {
   description={description}
   image={image}
 >
+
+<h1 class="text-center">{bio.basics.name}</h1>
 <div class="container">
+  <div class="flex flex-col lg:flex-row items-start pb-10">
+    <div class="lg:w-1/4">
+      <p class="pb-2"><DynamicIcon className="inline-block text-xl" icon="FaEnvelope"/> <a class="text-blue-500" href=`mailto:${bio.basics.email}`>{bio.basics.email}</a></p>
+      <p> <DynamicIcon className="inline-block text-xl" icon="FaPhoneSquareAlt"/> {bio.basics.phone}</p>
+    </div>
+    <div class="lg:w-3/4 text-end">
+      
+      <p><DynamicIcon className="inline-block text-xl" icon="FaHome"/>  {bio.basics.location.city}, {bio.basics.location.region} {bio.basics.location.postalCode} {bio.basics.location.countryCode}</p>
+    </div>
+  </div>
+    
   <ResumeSection {...interests}/>
   <ResumeSection {...skills}/>
-  <!-- Interests -->
-  <div class="flex flex-col lg:flex-row items-center pb-10">
-    <div class="lg:w-1/4">
-      <h1>Interests</h1>
-    </div>
-    <div class="lg:w-1/2">
-      <p class="m-0">{bio.interests.map((interest) => interest.name + ", ")}</p>
-    </div>
-  </div>
-  
- <!-- Skills -->
-  <div class="flex flex-col lg:flex-row items-start pb-10">
-    <div class="lg:w-1/4">
-      <h1>Skills</h1>
-    </div>
-    <div class="lg:w-1/2">
-      <p class="m-0">{bio.skills.map((interest) => interest.name + ": " + interest.keywords.map((kw) => kw))}</p>
-    </div>
-  </div>
+  <ResumeSection {...education}/>
+  <ResumeActivitiesSection {...work}/>
+  <ResumeActivitiesSection {...activities}/>
+  <ResumeSection {...awards}/>
 
-  <!-- Education -->
-
-  <div class="flex flex-col lg:flex-row items-start pb-10">
-    <div class="lg:w-1/4">
-      <h1 class="">Education</h1>
-    </div>
-    <div class="lg:w-1/2">
-      <p class="m-0">{bio.education.map((edu) => edu.institution + ", " + edu.studyType + " " + edu.area)}</p>
-    </div>
-    <div class="lg:w-1/4">
-      <p class="m-0 text-end">{bio.education.map((edu) => edu.startDate + " - " + edu.endDate)}</p>
-    </div>
-  </div>
-
-  <!-- Work -->
-
-  <div class="flex flex-col lg:flex-row items-start pb-10">
-    <div class="lg:w-1/4">
-      <h1 class="">Work</h1>
-    </div>
-    <div class="lg:w-1/2">
-      <p class="m-0">{bio.education.map((edu) => edu.institution + ", " + edu.studyType + " " + edu.area)}</p>
-    </div>
-    <div class="lg:w-1/4">
-      <p class="m-0 text-end">{bio.education.map((edu) => edu.startDate + " - " + edu.endDate)}</p>
-    </div>
-  </div>
+  <!-- <ul class="stepper">
+    <li class="stepper__item bg-yellow-50"><DynamicIcon className="inline-block text-lg text-yellow-500" icon="SiJavascript"/> Javascript</li>
+    <li class="stepper__item bg-yellow-50"><DynamicIcon className="inline-block text-lg text-blue-500" icon="SiReact"/> ReactJS</li>
+    <li class="stepper__item bg-yellow-50"><DynamicIcon className="inline-block text-lg text-blue-500" icon="SiFlutter"/> Flutter</li>
+    <li class="stepper__item bg-yellow-50"><DynamicIcon className="inline-block text-lg text-blue-500" icon="SiCsharp"/> C#</li>
+    <li class="stepper__item bg-yellow-50"><DynamicIcon className="inline-block text-lg text-yellow-500" icon="SiFirebase"/> Firebase</li>
+  </ul> -->
 </div>
 </Base>

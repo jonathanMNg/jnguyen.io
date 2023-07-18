@@ -20,19 +20,19 @@ profile:
 # Skills
 skills:
   - name: "Javascript"
-    level: "Fluent"
+    level: "Advanced"
     icon: "RiJavascriptFill"
   
   - name: "Flutter"
-    level: "Intermediate"
+    level: "Advanced"
     icon: "RiFlutterFill"
     
   - name: "Python"
-    level: "Fluent"
+    level: "Advanced"
     icon: "FaPython"
     
   - name: "C#"
-    level: "Fluent"
+    level: "Advanced"
     icon: "SiCsharp"
 # Features
 features:
