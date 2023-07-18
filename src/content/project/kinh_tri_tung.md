@@ -9,7 +9,7 @@ author: "Jonathan Nguyen"
 tags: ["dart", "flutter", "firebase", "realm"]
 draft: false
 ---
-As a Buddhist, I also practice reciting Buddha's teaching every day. And it's hard to carry the Buddhist books with me everywhere. So I created this free mobile app that doesn't have any ads.  It is designed as a mobile library for Vietnamese Buddist Texts and Scriptures. 
+As a Buddhist, I also practice reciting Buddha's teaching every day, and it's hard to carry the Buddhist books with me everywhere. That's why I created this mobile app.  It is designed as a mobile library for Buddist Texts and Scriptures. 
 This app currently available on both [Google Play Store](https://play.google.com/store/apps/details?id=one.rollingst.kinh_tri_tung) and [Apple AppStore](https://apps.apple.com/us/app/kinh-tr%C3%AC-t%E1%BB%A5ng/id1670489805)
 
 

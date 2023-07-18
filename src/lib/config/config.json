@@ -18,7 +18,7 @@
     "theme_switcher": true,
     "default_theme": "system",
     "pagination": 4,
-    "summary_length": 200,
+    "summary_length": 190,
     "blog_folder": "blog",
     "project_folder": "project"
   },

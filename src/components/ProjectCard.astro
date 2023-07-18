@@ -1,6 +1,7 @@
 ---
 import { Image } from "@astrojs/image/components";
 import config from "@/lib/config/config.json";
+import dateFormat from "@/lib/utils/dateFormat";
 import { humanize, plainify, slugify } from "@/lib/utils/textConverter";
 import { FaRegFolder, FaRegUserCircle } from "react-icons/fa/index.js";
 import AnimatedCard from "@/helpers/AnimatedCard";
@@ -14,6 +15,7 @@ const { title, image, date, author, categories } = data.data;
 ---
 <AnimatedCard client:load>
 <div class="bg-body dark:bg-darkmode-body">
+  <a>{dateFormat(date)}</a>
   {
     image && (
       <Image
@@ -49,7 +51,7 @@ const { title, image, date, author, categories } = data.data;
       }
     </li>
   </ul>
-  <p class="mb-6">{plainify(data.body?.slice(0, Number(summary_length)))}</p>
+  <p class="mb-6">{plainify(data.body?.slice(0, Number(summary_length)) + "...")}</p>
   <a
     class="btn btn-outline-primary btn-sm"
     href={`/${project_folder}/${data.slug}`}

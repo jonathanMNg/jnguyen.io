@@ -23,6 +23,7 @@ export interface NavigationLink {
 const { main }: { main: NavigationLink[] } = menu;
 const { settings } = config;
 const { pathname } = Astro.url;
+console.log(pathname);
 ---
 
 <header class={`header z-30 ${settings.sticky_header && "sticky top-0"}`}>
@@ -73,6 +74,7 @@ const { pathname } = Astro.url;
                       .includes(pathname)
                       ? "active"
                       : ""
+                   
                   }`}
                 >
                   {menu.name}
@@ -87,7 +89,7 @@ const { pathname } = Astro.url;
                         href={child.url}
                         class={`nav-dropdown-link block ${
                           (pathname === `${child.url}/` ||
-                            pathname === child.url) &&
+                            pathname.includes(`${child.url}`)) &&
                           "active"
                         }`}
                       >
@@ -102,7 +104,7 @@ const { pathname } = Astro.url;
                 <a
                   href={menu.url}
                   class={`nav-link block ${
-                    (pathname === `${menu.url}/` || pathname === menu.url) &&
+                    (pathname === `${menu.url}/` || pathname === menu.url || (menu.url !== '/' && pathname.includes(`${menu.url}`))) &&
                     "active"
                   }`}
                 >
