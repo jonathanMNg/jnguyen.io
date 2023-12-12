@@ -5,9 +5,15 @@ import { getAllTaxonomy, getTaxonomy } from "@/lib/taxonomyParser.astro";
 import { humanize } from "@/lib/utils/textConverter";
 import PageHeader from "@/partials/PageHeader.astro";
 
+const { project_folder }: { project_folder: string } = config.settings;
 const { blog_folder }: { blog_folder: string } = config.settings;
-const tags = await getTaxonomy(blog_folder, "tags");
-const allTags = await getAllTaxonomy(blog_folder, "tags");
+const tags = [
+  ...await getTaxonomy(config.settings.blog_folder,"tags"),
+  ...await getTaxonomy(config.settings.project_folder, "tags")
+].filter(function(elem, index, self) {
+  return index === self.indexOf(elem);
+});
+const allTags = [...await getAllTaxonomy(project_folder, "tags"), ...await getAllTaxonomy(blog_folder, "tags")];
 ---
 
 <Base title={"Tags"}>

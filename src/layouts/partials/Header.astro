@@ -23,7 +23,6 @@ export interface NavigationLink {
 const { main }: { main: NavigationLink[] } = menu;
 const { settings } = config;
 const { pathname } = Astro.url;
-console.log(pathname);
 ---
 
 <header class={`header z-30 ${settings.sticky_header && "sticky top-0"}`}>
@@ -74,7 +73,7 @@ console.log(pathname);
                       .includes(pathname)
                       ? "active"
                       : ""
-                   
+
                   }`}
                 >
                   {menu.name}

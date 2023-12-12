@@ -5,9 +5,10 @@ import SearchTsx from "../layouts/Search";
 import { getSinglePage } from "@/lib/contentParser.astro";
 
 const { blog_folder } = config.settings;
+const { project_folder } = config.settings;
 
 // Retrieve all articles
-const posts = await getSinglePage(blog_folder);
+const posts =  [...await getSinglePage(blog_folder), ...await getSinglePage(project_folder)];
 
 // List of items to search in
 const searchList = posts.map((item) => ({

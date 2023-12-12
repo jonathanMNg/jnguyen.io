@@ -20,7 +20,8 @@
     "pagination": 4,
     "summary_length": 190,
     "blog_folder": "blog",
-    "project_folder": "project"
+    "project_folder": "project",
+    "categories_folder": "categories"
   },
 
   "params": {
