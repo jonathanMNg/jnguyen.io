@@ -8,12 +8,13 @@ import {
   FaSearch,
 } from "react-icons/fa/index.js";
 
-const { summary_length, blog_folder } = config.settings;
+const { summary_length, blog_folder, project_folder } = config.settings;
 
 export type SearchItem = {
   slug: string;
   data: any;
   content: any;
+  collection: any;
 };
 
 interface Props {
@@ -131,7 +132,7 @@ const SearchTsx = ({ searchList }: Props) => {
                     />
                   )}
                   <h4 className="mb-3">
-                    <a href={`/${blog_folder}/${item.slug}`}>
+                    <a href={`/${item.collection === 'blog' ? blog_folder : project_folder }/${item.slug}`}>
                       {item.data.title}
                     </a>
                   </h4>
@@ -164,7 +165,8 @@ const SearchTsx = ({ searchList }: Props) => {
                   </p>
                   <a
                     className="btn btn-outline-primary btn-sm"
-                    href={`/${blog_folder}/${item.slug}`}
+                    href={`/${
+                      item.collection === 'blog' ? blog_folder : project_folder }/${item.slug}`}
                   >
                     read more
                   </a>

@@ -6,6 +6,7 @@ import { getSinglePage } from "@/lib/contentParser.astro";
 import { getTaxonomy } from "@/lib/taxonomyParser.astro";
 import taxonomyFilter from "@/lib/utils/taxonomyFilter";
 import PageHeader from "@/partials/PageHeader.astro";
+import ProjectCard from "../../components/ProjectCard.astro";
 
 export async function getStaticPaths() {
   const categories = [...await getTaxonomy(
@@ -31,9 +32,9 @@ const filterByCategories = taxonomyFilter(posts, "categories", category!);
     <div class="container">
       <div class="row">
         {
-          filterByCategories.map((post) => (
+            filterByCategories.map((post) => (
             <div class="mb-14 md:col-6 lg:col-4">
-              <BlogCard data={post} />
+              {post.collection === 'blog' ? <BlogCard data={post} /> : <ProjectCard data={post}/>}
             </div>
           ))
         }
