@@ -13,13 +13,14 @@ import {
   FaRegFolder,
   FaRegUserCircle,
 } from "react-icons/fa/index.js";
+import DynamicIcon from "./helpers/DynamicIcon";
 
 const { project_folder } = config.settings;
 const posts = await getSinglePage(project_folder);
 const { post } = Astro.props;
 const similarPosts = similerItems(post, posts, post.slug);
 const { Content } = await post.render();
-const { title, description, author, categories, image, date, tags } = post.data;
+const { title, description, author, categories, image, date, tags, github } = post.data;
 ---
 
 <section class="section pt-7">
@@ -65,24 +66,11 @@ const { title, description, author, categories, image, date, tags } = post.data;
         </ul>
         <div class="content mb-10">
           <Content />
+
         </div>
+        {github != null && <p>You can check out my code on <a class="text-blue-500 underline-none" href={github} target="_blank">GitHub <DynamicIcon className="inline-block text-xl" icon="FaGithub"/></a></p>}
         <div class="row items-start justify-between">
           <div class="mb-10 flex items-center lg:col-5 lg:mb-0">
-            <h5 class="mr-3">Tags :</h5>
-            <ul>
-              {
-                tags.map((tag: string) => (
-                  <li class="inline-block">
-                    <a
-                      class="m-1 block rounded bg-theme-light px-3 py-1 hover:bg-primary hover:text-white dark:bg-darkmode-theme-light dark:hover:bg-darkmode-primary dark:hover:text-dark"
-                      href={`/tags/${slugify(tag)}`}
-                    >
-                      {humanize(tag)}
-                    </a>
-                  </li>
-                ))
-              }
-            </ul>
           </div>
           <div class="flex items-center lg:col-4">
             <h5 class="mr-3">Share :</h5>
@@ -94,10 +82,8 @@ const { title, description, author, categories, image, date, tags } = post.data;
             />
           </div>
         </div>
-        <Disqus className="mt-20" client:load />
       </article>
     </div>
-
     <!-- Related posts -->
     <div class="section pb-0">
       <h2 class="h3 mb-12 text-center">Related Posts</h2>

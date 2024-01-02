@@ -39,4 +39,3 @@ arguably the best scripting language. (Sorry Javascript)
   <img src="/images/project/android_bot/python_superior.png"/>
 </p>
 
-[GitHub <i class="github icon"/>](https://github.com/ICS414-Team-1/hawaii-alert-fx)
