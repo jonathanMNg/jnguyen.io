@@ -15,6 +15,14 @@
     {
       "name": "Resume",
       "url": "/resume"
+    },
+    {
+      "name": "Privacy",
+      "url": "/privacy"
+    },
+    {
+      "name": "Terms and Conditions",
+      "url": "/terms"
     }
   ],
   "footer": [
