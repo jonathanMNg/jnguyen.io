@@ -1,0 +1,60 @@
+---
+import PrivacyCard from "../components/PrivacyCard.astro";
+import Share from "../components/shared/Share.astro";
+import config from "@/lib/config/config.json";
+import Disqus from "@/layouts/helpers/Disqus";
+import { getSinglePage } from "@/lib/contentParser.astro";
+import dateFormat from "@/lib/utils/dateFormat";
+import similerItems from "@/lib/utils/similarItems";
+import { humanize, markdownify, slugify } from "@/lib/utils/textConverter";
+import { Image } from "@astrojs/image/components";
+import {
+  FaRegClock,
+  FaRegFolder,
+  FaRegUserCircle,
+} from "react-icons/fa/index.js";
+import PrivacyCard from "../components/PrivacyCard.astro";
+
+const { privacy_folder } = config.settings;
+const posts = await getSinglePage(privacy_folder);
+const { post } = Astro.props;
+const similarPosts = similerItems(post, posts, post.slug);
+const { Content } = await post.render();
+const { title, description, author, categories, date, tags } = post.data;
+---
+
+<section class="section pt-7">
+  <div class="container">
+    <div class="row justify-center">
+      <article class="lg:col-10">
+        <h1 set:html={markdownify(title)} class="h2 mb-4" />
+        <ul class="mb-4">
+          <li class="mr-4 inline-block">
+            <a href={`/authors/${slugify(author)}`}>
+              <FaRegUserCircle className={"mr-2 -mt-1 inline-block"} />
+              {humanize(author)}
+            </a>
+          </li>
+          <li class="mr-4 inline-block">
+            <FaRegFolder className={"mr-2 -mt-1 inline-block"} />
+            {
+              categories.map((category: string, index: number) => (
+                <a href={`/categories/${slugify(category)}`}>
+                  {humanize(category)}
+                  {index !== categories.length - 1 && ","}
+                </a>
+              ))
+            }
+          </li>
+          <li class="mr-4 inline-block">
+            <FaRegClock className={"mr-2 -mt-1 inline-block"} />
+            {dateFormat(date)}
+          </li>
+        </ul>
+        <div class="content mb-10">
+          <Content />
+        </div>
+      </article>
+    </div>
+  </div>
+</section>

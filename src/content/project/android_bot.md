@@ -3,7 +3,7 @@ title: "Android Bot"
 meta_title: "Android Bot"
 description: "An automated bot that does repeated tasks on Android stimulated devices"
 date: 2023-12-12T15:00:00Z
-image: "/images/project/logo.png"
+image: "/images/project/android_bot/logo.png"
 categories: ["Automation"]
 author: "Jonathan Nguyen"
 tags: ["android", "video games", "python", "memu"]

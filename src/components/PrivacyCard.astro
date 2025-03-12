@@ -1,34 +1,21 @@
 ---
 import { Image } from "@astrojs/image/components";
 import config from "@/lib/config/config.json";
-import dateFormat from "@/lib/utils/dateFormat";
 import { humanize, plainify, slugify } from "@/lib/utils/textConverter";
 import { FaRegFolder, FaRegUserCircle } from "react-icons/fa/index.js";
 import AnimatedCard from "@/helpers/AnimatedCard";
 
 const {
   summary_length,
-  project_folder,
-}: { summary_length: number; project_folder: string } = config.settings;
+  privacy_folder,
+}: { summary_length: number; privacy_folder: string } = config.settings;
 const { data } = Astro.props;
 const { title, image, date, author, categories, description } = data.data;
 ---
 <AnimatedCard client:load>
 <div class="bg-body dark:bg-darkmode-body">
-  <a>{dateFormat(date)}</a>
-  {
-    image && (
-      <Image
-        class="mb-6 w-full rounded"
-        src={image}
-        alt={title}
-        width={445}
-        height={230}
-      />
-    )
-  }
   <h4 class="mb-3">
-    <a href={`/${project_folder}/${data.slug}`}>
+    <a href={`/${privacy_folder}/${data.slug}`}>
       {title}
     </a>
   </h4>
@@ -54,7 +41,7 @@ const { title, image, date, author, categories, description } = data.data;
   <p class="mb-6">{plainify(description)}</p>
   <a
     class="btn btn-outline-primary btn-sm"
-    href={`/${project_folder}/${data.slug}`}
+    href={`/${privacy_folder}/${data.slug}`}
   >
     read more
   </a>

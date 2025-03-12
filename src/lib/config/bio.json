@@ -3,9 +3,9 @@
       "name": "Jonathan Nguyen",
       "label": "Software Engineer",
       "picture": "https://github.com/kambergjohnson.png",
-      "email": "contact@jnguyen.io",
+      "email": "nn4@hawaii.edu",
       "phone": "808-277-8292",
-      "website": "https://mmaluhia.github.io",
+      "website": "https://www.jng.app",
       "summary": "I am studying for a B.S. in Computer Science in the Department of Information and Computer Sciences at the University of Hawaii. I expect to graduate in Spring, 2024.",
       "location": { "address": "", "postalCode": "96706", "city": "Ewa Beach", "countryCode": "USA", "region": "Hawaii" },
       "profiles": [
@@ -59,7 +59,7 @@
       {
         "company": "UH Manoa Dept. Electrical Engineering, Honolulu HI",
         "jobs": [
-          { 
+          {
             "name": "IT Assistants",
             "summaries": [
               "Maintain, install, update Computer Lab desktops and laptops",
@@ -68,7 +68,7 @@
             ],
             "startDate": "2016-10",
             "endDate": "2018-10"
-          }          
+          }
         ],
         "startDate": "2016-10",
         "endDate": "2018-10"
@@ -76,7 +76,7 @@
       {
         "company": "Sullivan Family of Companies, Honolulu HI",
         "jobs": [
-          { 
+          {
             "name": "Service Desk Specialist",
             "summaries": [
               "Troubleshoot and resolve technical issues with store employees over the phone or by email.",
@@ -93,7 +93,7 @@
       {
         "company": "Decision Research Corporation, Honolulu HI",
         "jobs": [
-          { 
+          {
             "name": "IT Ops Specialist",
             "summaries": [
               "Monitor, report, and run MSSQL cycles on demand.",
@@ -104,7 +104,7 @@
             "startDate": "2020-03",
             "endDate": "2021-08"
           },
-          { 
+          {
             "name": "Software Engineer",
             "summaries": [
               "Translate a software that generate project template from Perl to C# code.",
@@ -128,7 +128,7 @@
             "summaries": [
               "Design firmware for distributed weather sensor network",
               "Maintain custom data collection and storage infrastructure"
-            ],            
+            ],
             "startDate": "2016-01",
             "endDate": "Present"
           }

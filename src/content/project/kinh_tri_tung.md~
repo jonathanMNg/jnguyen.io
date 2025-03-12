@@ -25,5 +25,5 @@ The user can also increase/decrease the fontSize when they're reading.
 ### Framework and Backends
 1. This app is built with [Flutter](https://flutter.dev/) as a cross-platform native mobile app.
 2. For state management, I used Flutter built-in setState side-by-side with [Bloc](https://bloclibrary.dev/#/) pattern.
-3. I use [Supabase](https://supabse.com/) Postgres as a backend. 
+3. I use [Supabase](https://supabse.com/) PostGres as a backend. 
 
